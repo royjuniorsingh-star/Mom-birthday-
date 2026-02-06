@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Mom 💐</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #2a0f14, #0d0507);
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    color: #ffe9e9;
+  }
+
+  .page {
+    display: none;
+    max-width: 850px;
+    padding: 40px 30px;
+    animation: fadeIn 2.5s ease;
+    z-index: 2;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ffb3b3;
+    text-shadow: 0 0 20px rgba(255,179,179,0.8);
+    margin-bottom: 25px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 18px;
+    margin: 25px 0;
+    box-shadow: 0 0 30px rgba(255, 180, 180, 0.5);
+  }
+
+  p {
+    font-size: 1.45em;
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+
+  .btn {
+    margin-top: 35px;
+    padding: 16px 44px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #ff9a9a, #ffc1c1);
+    color: #0d0507;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,154,154,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(255,154,154,0.9);
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 2em;
+    opacity: 0.7;
+    animation: floatUp 9s linear forwards;
+  }
+
+  @keyframes floatUp {
+    from { transform: translateY(110vh); opacity: 0; }
+    to { transform: translateY(-120px); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>Happy Birthday Mom 💐</h1>
+
+  <img src="mom.jpg" alt="My mom">
+
+  <p>
+    Today is all about you —  
+    your love, your kindness, and everything  
+    you’ve done for me.
+  </p>
+
+  <p>
+    You’ve always been my support,  
+    my comfort, and my strength.
+  </p>
+
+  <button class="btn" onclick="go(2)">Open your message 🤍</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>From my heart 🤍</h1>
+
+  <p>
+    Thank you for every sacrifice,  
+    every late night, and every moment  
+    you put me before yourself.
+  </p>
+
+  <p>
+    I’m so grateful to have you as my mom.  
+    Your love means more to me than words can say.
+  </p>
+
+  <p>
+    I hope this year brings you happiness,  
+    peace, and everything your heart deserves 🎂
+  </p>
+
+  <p>
+    I love you always 🤍
+  </p>
+</div>
+
+<script>
+  function go(n) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + n).classList.add('active');
+    hearts();
+  }
+
+  function hearts() {
+    for (let i = 0; i < 8; i++) {
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.textContent = "❤️";
+      h.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 9000);
+    }
+  }
+
+  setInterval(hearts, 1000);
+</script>
+
+</body>
+</html>
